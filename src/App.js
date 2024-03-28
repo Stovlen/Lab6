@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Menu from "./pages/components/menu/Menu";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AboutComponent from "./pages/components/about-component/about-component";
+import ListComponent from "./pages/components/list-component/list-component";
+import FavouritesComponent from "./pages/components/favourites-component/FavouritesComponent";
 
 function App() {
+  //localStorage.removeItem('favourites');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <section className="app">
+      <header className="app-header">
+        <Menu />
       </header>
-    </div>
+      <Router>
+        <Switch>
+          <Route path="/about" component={AboutComponent} />
+          <Route path="/favourites" component={FavouritesComponent} />
+          <Route path="/" component={ListComponent} />
+        </Switch>
+      </Router>
+    </section>
   );
 }
 
